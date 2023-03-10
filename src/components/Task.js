@@ -1,13 +1,24 @@
-import React from "react";
+import React, {useState} from "react";
 
-function Task() {
+function Task({text,category}) {
+
+const [visible, setVisible]=useState(true);
+
+function deleteTask(){
+  setVisible((value)=>!value)
+}
+    
   return (
     <div className="task">
-      <div className="label">CATEGORY HERE</div>
-      <div className="text">TEXT HERE</div>
-      <button className="delete">X</button>
-    </div>
+    {visible && <div>
+      <div className="label">{category}</div>
+      <div className="text">{text}</div>
+      <button className="delete" id={text} onClick={deleteTask}>X</button>
+    </div>}
+      </div>
   );
 }
 
 export default Task;
+
+
